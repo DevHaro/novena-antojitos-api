@@ -7,5 +7,18 @@ require('dotenv').config()
 // const dotenv = require('dotenv)
 // dotenv.config()
 
+const db = require('./src/lib/db')
+const server = require('./src/server')
+
+const { PORT = 3030 } = process.env
+
 console.log('env: ', process.env.DB_USER)
 
+db.connect()
+  .then(() => {
+    console.log('DB connected')
+    server.listen(PORT, () => console.log(`Server is running at ${PORT}`))
+  })
+  .catch(error => {
+    console.error('DB ERROR: ', error)
+  })

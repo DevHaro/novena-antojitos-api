@@ -6,8 +6,9 @@ const {
   DB_USER,
   DB_PASSWORD,
   DB_HOST,
-  DB_NAME
-} = proccess.env
+  DB_NAME,
+  PORT
+} = process.env
 
 // protocolo://user:password@host/dbName
 const url = `mongodb+srv://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`
